@@ -3,6 +3,7 @@ from http.server import BaseHTTPRequestHandler
 import json
 from decimal import Decimal
 import re
+from urllib.parse import unquote
 
 
 class Server(BaseHTTPRequestHandler):
@@ -25,10 +26,8 @@ class Server(BaseHTTPRequestHandler):
         return
 
     def do_POST(self):
-
-        regex = re.compile('^/editLocations/(?P<source>[\w\d]+)/(?P<deviceId>[\w\d]+)$')
-
-        match = regex.search(self.path)
+        regex = re.compile('^/editLocations/(?P<source>[\w\d\s]+)/(?P<deviceId>[\w\d\s]+)$')
+        match = regex.search(unquote(self.path))
 
         if match is None:
             return
@@ -71,8 +70,8 @@ class Server(BaseHTTPRequestHandler):
                 resultEntry['name'] = entry[0]
                 resultEntry['capacity'] = entry[1]
                 resultEntry['image'] = entry[2]
-                resultEntry['pressure'] = str(max(0.1, min(1, Decimal(entry[3]) / Decimal(entry[1]))))
-                resultEntry['visitors'] = entry[3]
+                resultEntry['pressure'] = float(max(0.1, min(1, Decimal(entry[3]) / Decimal(entry[1]))))
+                resultEntry['visitors'] = int(entry[3])
                 resultEntry['lastTimestamp'] = entry[4]
 
                 result['locations'].append(resultEntry)
