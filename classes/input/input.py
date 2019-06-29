@@ -2,8 +2,6 @@ import sqlite3
 
 
 class Input(object):
-    db = None
-
     def fetch(self):
         return None
 
