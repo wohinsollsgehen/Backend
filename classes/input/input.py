@@ -9,7 +9,7 @@ class Input(object):
 
     def storeInput(self, source, device_id, value, timestamp):
         try:
-            with sqlite3.connect('data/storage.db') as connection:
+            with sqlite3.connect('data/storage.sqlite3') as connection:
                 cursor = connection.cursor()
 
                 cursor.execute('create table if not exists input (id integer primary key, source text, deviceId text, value text, timestamp timestamp);')
