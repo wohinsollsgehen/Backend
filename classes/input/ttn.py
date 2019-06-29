@@ -21,6 +21,5 @@ class InputTTN(Input):
 
         while True:
             mqtt_client.connect()
-            time.sleep(15)
+            time.sleep(60)
             mqtt_client.close()
-            break

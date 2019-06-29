@@ -2,5 +2,6 @@
 # import ttn
 from classes.input.ttn import InputTTN
 
-with InputTTN() as ttnInstance:
-    ttnInstance.fetch();
+# TODO: each input in one thread / parallel
+ttnInstance = InputTTN()
+ttnInstance.fetch();
