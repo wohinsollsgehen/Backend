@@ -4,11 +4,12 @@ from classes.server import Server
 from http.server import HTTPServer
 
 from classes.input.ttn import InputTTN
+from classes.input.library import Library
 
 class APIThread(threading.Thread):
     def run(self):
         print("Run API-Server...")
-        httpServer = HTTPServer(('127.0.0.1', 8081), Server)
+        httpServer = HTTPServer(('0.0.0.0', 8081), Server)
         httpServer.serve_forever(poll_interval=0.5)
 
 class InputThread(threading.Thread):
@@ -26,6 +27,12 @@ class InputThread(threading.Thread):
         ttnInstance = InputTTN(self.app_id, self.access_key)
         ttnInstance.fetch()
 
+class LibraryThread(threading.Thread):
+    def run(self):
+        print("Run Library...")
+        library = Library()
+        library.fetch()
+
 def main():
     api_thread = APIThread()
     api_thread.start()
@@ -35,5 +42,8 @@ def main():
 
     input_thread2 = InputThread("paxcounter_heltec_digihub", "ttn-account-v2.rFLbrMlZoaikMgeSmnX-vWNSFkorssZXkw2DSeykY2Y")
     input_thread2.start()
+
+    library = LibraryThread()
+    library.start()
 
 main()
