@@ -37,6 +37,10 @@ class Server(BaseHTTPRequestHandler):
         name = self.headers['name']
         capacity = self.headers['capacity']
         image = self.headers['image']
+        longitude = self.headers['longitude']
+        latitude = self.headers['latitude']
+        description = self.headers['description']
+        informationUrl = self.headers['informationUrl']
 
         with sqlite3.connect('data/storage.sqlite3') as connection:
                 cursor = connection.cursor()
@@ -45,9 +49,9 @@ class Server(BaseHTTPRequestHandler):
                 result = cursor.fetchall()
 
                 if len(result) == 0:
-                    cursor.execute('INSERT INTO location (source, deviceId, name, capacity, image) VALUES (\'' + source + '\',\'' + deviceId + '\',\'' + name + '\',\'' + capacity + '\',\'' + image + '\');')
+                    cursor.execute('INSERT INTO location (source, deviceId, name, capacity, image, longitude, latitude, description, informationUrl) VALUES (\'' + source + '\',\'' + deviceId + '\',\'' + name + '\',\'' + capacity + '\',\'' + image + '\',\'' + longitude + '\',\'' + latitude + '\', \'' + description + '\',\'' + informationUrl + '\');') # , description, informationUrl
                 else:
-                    cursor.execute('UPDATE location SET name = \'' + name + '\', capacity = \'' + capacity + '\', image = \'' + image + '\' where id = ' + str(result[0][0]) + ';')
+                    cursor.execute('UPDATE location SET name = \'' + name + '\', capacity = \'' + capacity + '\', image = \'' + image + '\', longitude = \'' + longitude + '\', latitude = \'' + latitude + '\'  , description = \'' + description + '\', informationUrl = \'' + informationUrl + '\' where id = ' + str(result[0][0]) + ';')
 
                 connection.commit()
 
@@ -62,7 +66,7 @@ class Server(BaseHTTPRequestHandler):
         with sqlite3.connect('data/storage.sqlite3') as connection:
             cursor = connection.cursor()
 
-            cursor.execute('select location.name, location.capacity, location.image, input.value, input.timestamp, max(input.timestamp) from input join location on input.deviceId = location.deviceId and input.source = location.source group by input.source, input.deviceId;')
+            cursor.execute('select location.name, location.capacity, location.image, input.value, location.longitude, location.latitude, location.description, location.informationUrl, input.timestamp, max(input.timestamp) from input join location on input.deviceId = location.deviceId and input.source = location.source group by input.source, input.deviceId;')
 
             for entry in cursor.fetchall():
                 resultEntry = {}
@@ -72,7 +76,11 @@ class Server(BaseHTTPRequestHandler):
                 resultEntry['image'] = entry[2]
                 resultEntry['pressure'] = float(max(0.1, min(1, Decimal(entry[3]) / Decimal(entry[1]))))
                 resultEntry['visitors'] = int(entry[3])
-                resultEntry['lastTimestamp'] = entry[4]
+                resultEntry['longitude'] = entry[4]
+                resultEntry['latitude'] = entry[5]
+                resultEntry['description'] = entry[6]
+                resultEntry['informationUrl'] = entry[7]
+                resultEntry['lastTimestamp'] = entry[8]
 
                 result['locations'].append(resultEntry)
 
