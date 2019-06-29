@@ -8,9 +8,6 @@ class Input(object):
         return None
 
     def storeInput(self, source, device_id, value, timestamp):
-
-        print(source, device_id, value, timestamp)
-
         try:
             with sqlite3.connect('data/storage') as connection:
                 cursor = connection.cursor()
