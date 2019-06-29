@@ -12,7 +12,7 @@ class Server(BaseHTTPRequestHandler):
 
         result = []
 
-        with sqlite3.connect('data/storage.db') as connection:
+        with sqlite3.connect('data/storage.sqlite3') as connection:
             cursor = connection.cursor()
 
             cursor.execute('select location.name, input.value, input.timestamp, max(input.timestamp) from input join location on input.deviceId = location.deviceId and input.source = location.source group by input.source, input.deviceId;')
