@@ -1,4 +1,6 @@
+import sqlite3
 from http.server import BaseHTTPRequestHandler
+import json
 
 
 class Server(BaseHTTPRequestHandler):
@@ -8,6 +10,22 @@ class Server(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.end_headers()
 
-        self.wfile.write(bytes('[ { "name": "Burgerladen 1", "visitors": 12345, "lastTimestamp": 12345679.1234 }, { "name": "Burgerladen 2", "visitors": 12345, "lastTimestamp": 12345679.1234 }, { "name": "Burgerladen 3", "visitors": 12345, "lastTimestamp": 12345679.1234 } ]', "utf8"))
+        result = []
 
+        with sqlite3.connect('data/storage.db') as connection:
+            cursor = connection.cursor()
+
+            cursor.execute('select location.name, input.value, input.timestamp, max(input.timestamp) from input join location on input.deviceId = location.deviceId and input.source = location.source group by input.source, input.deviceId;')
+
+            for entry in cursor.fetchall():
+                print(entry)
+                resultEntry = {}
+
+                resultEntry['name'] = entry[0]
+                resultEntry['visitors'] = entry[1]
+                resultEntry['lastTimestamp'] = entry[2]
+
+                result.append(resultEntry)
+
+        self.wfile.write(bytes(str(json.dumps(result)), "utf8"))
         return
