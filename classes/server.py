@@ -20,7 +20,6 @@ class Server(BaseHTTPRequestHandler):
             cursor.execute('select location.name, location.capacity, location.image, input.value, input.timestamp, max(input.timestamp) from input join location on input.deviceId = location.deviceId and input.source = location.source group by input.source, input.deviceId;')
 
             for entry in cursor.fetchall():
-                print(entry)
                 resultEntry = {}
 
                 resultEntry['name'] = entry[0]
@@ -33,4 +32,7 @@ class Server(BaseHTTPRequestHandler):
                 result['locations'].append(resultEntry)
 
         self.wfile.write(bytes(str(json.dumps(result)), "utf8"))
+        return
+
+    def log_message(self, format, *args):
         return
