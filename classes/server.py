@@ -41,6 +41,7 @@ class Server(BaseHTTPRequestHandler):
         latitude = self.headers['latitude']
         description = self.headers['description']
         informationUrl = self.headers['informationUrl']
+        state = self.headers['state']
 
         with sqlite3.connect('data/storage.sqlite3') as connection:
                 cursor = connection.cursor()
@@ -49,9 +50,9 @@ class Server(BaseHTTPRequestHandler):
                 result = cursor.fetchall()
 
                 if len(result) == 0:
-                    cursor.execute('INSERT INTO location (source, deviceId, name, capacity, image, longitude, latitude, description, informationUrl) VALUES (\'' + source + '\',\'' + deviceId + '\',\'' + name + '\',\'' + capacity + '\',\'' + image + '\',\'' + longitude + '\',\'' + latitude + '\', \'' + description + '\',\'' + informationUrl + '\');') # , description, informationUrl
+                    cursor.execute('INSERT INTO location (source, deviceId, name, capacity, image, longitude, latitude, description, informationUrl, state) VALUES (\'' + source + '\',\'' + deviceId + '\',\'' + name + '\',\'' + capacity + '\',\'' + image + '\',\'' + longitude + '\',\'' + latitude + '\', \'' + description + '\',\'' + informationUrl + '\', \'' + state + '\');') # , description, informationUrl
                 else:
-                    cursor.execute('UPDATE location SET name = \'' + name + '\', capacity = \'' + capacity + '\', image = \'' + image + '\', longitude = \'' + longitude + '\', latitude = \'' + latitude + '\'  , description = \'' + description + '\', informationUrl = \'' + informationUrl + '\' where id = ' + str(result[0][0]) + ';')
+                    cursor.execute('UPDATE location SET name = \'' + name + '\', capacity = \'' + capacity + '\', image = \'' + image + '\', longitude = \'' + longitude + '\', latitude = \'' + latitude + '\'  , description = \'' + description + '\', informationUrl = \'' + informationUrl + '\', state = \'' + state + '\' where id = ' + str(result[0][0]) + ';')
 
                 connection.commit()
 
@@ -66,7 +67,7 @@ class Server(BaseHTTPRequestHandler):
         with sqlite3.connect('data/storage.sqlite3') as connection:
             cursor = connection.cursor()
 
-            cursor.execute('select location.name, location.capacity, location.image, input.value, location.longitude, location.latitude, location.description, location.informationUrl, input.timestamp, max(input.timestamp) from input join location on input.deviceId = location.deviceId and input.source = location.source group by input.source, input.deviceId;')
+            cursor.execute('select location.name, location.capacity, location.image, input.value, location.longitude, location.latitude, location.description, location.informationUrl, location.state, input.timestamp, max(input.timestamp) from input join location on input.deviceId = location.deviceId and input.source = location.source and location.state = 1 group by input.source, input.deviceId;')
 
             for entry in cursor.fetchall():
                 resultEntry = {}
@@ -80,7 +81,8 @@ class Server(BaseHTTPRequestHandler):
                 resultEntry['latitude'] = entry[5]
                 resultEntry['description'] = entry[6]
                 resultEntry['informationUrl'] = entry[7]
-                resultEntry['lastTimestamp'] = entry[8]
+                resultEntry['state'] = entry[8]
+                resultEntry['lastTimestamp'] = entry[9]
 
                 result['locations'].append(resultEntry)
 
