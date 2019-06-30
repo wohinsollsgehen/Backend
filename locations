@@ -1,0 +1,87 @@
+--- Library/Lesesaal 1
+
+name:Universitätsbibliothek - Lesesaal 1
+capacity:100
+image:https://www.ub.uni-freiburg.de/fileadmin/_processed_/csm_20150812-2147b_9f95de774d.jpg
+latitude:47.9944563
+longitude:7.8449922
+description:Die Universitätsbibliothek Freiburg ist die Bibliothek der Albert-Ludwigs-Universität Freiburg. Als wissenschaftliche Universalbibliothek erfüllt sie einerseits die Aufgaben einer Hochschulbibliothek, die die Angehörigen der Universität sowie die der Katholischen Fachhochschule, der Evangelischen Fachhochschule, der Pädagogischen Hochschule und der Musikhochschule Freiburg mit Literatur und Informationen versorgt, steht andererseits aber auch allen anderen interessierten Bürgern offen.
+informationUrl:https://de.wikipedia.org/wiki/Universit%C3%A4tsbibliothek_Freiburg
+state:1
+
+--- TTN/12
+
+name:Wiwilíbrücke
+capacity:200
+image:http://ais.bz-ticket.de/piece/06/30/a6/f0/103851760-f-3_2-w-980.jpg
+latitude:47.9960395
+longitude:7.8399896
+description:Die Wiwilíbrücke (auch Blaue oder Stühlingerbrücke genannt) verbindet den Freiburger Stadtteil Stühlinger mit der Altstadt. Dabei überspannt sie die Gleisanlagen des Freiburger Hauptbahnhofs und verbindet den Kirchplatz der Herz-Jesu-Kirche mit dem Konrad-Adenauer-Platz. Die Brücke steht heute unter Denkmalschutz und wird von bis zu 10.000 Radfahrern pro Tag genutzt.
+informationUrl:https://de.wikipedia.org/wiki/Wiwil%C3%ADbr%C3%BCcke
+state:1
+
+--- TTN/11
+
+name:Augustinerplatz
+capacity:100
+image:http://ais.bz-ticket.de/piece/05/c1/57/cc/96557004-f-3_2-w-980.jpg
+latitude:47.9937846
+longitude:7.8499943
+description:Der gepflasterte Augustinerplatz breitet sich über einen sanft geschwungenen Hügel aus und ist einer der schönsten Plätze Freiburgs. Er liegt zentral in der Innenstadt, südlich des Münsterplatzes, umgeben von Museen, Cafés und natürlich dem Freiburger Bächle.
+informationUrl:
+state:1
+
+--- TTN/10
+
+name:Platz der Alten Synagoge
+capacity:100
+image:https://upload.wikimedia.org/wikipedia/commons/e/e0/Platz_der_Alten_Synagoge_in_Freiburg%2C_Synagogenbrunnen_mit_der_Universit%C3%A4tsbibliothek%2C_Blick_vom_KG_II.jpg
+latitude:47.9948945
+longitude:7.8460997
+description:Der Platz der Alten Synagoge in Freiburg im Breisgau ist mit seiner quadratischen Grundfläche von 130 × 130 Metern der zweitgrößte innerstädtische Platz nach dem Münsterplatz. Der Platz erhielt 1996 den heutigen Namen nach der beim Novemberpogrom 1938 zerstörten Synagoge, die im Südwesten des heutigen Platzes 1869/1870 erbaut worden war.
+informationUrl:https://de.wikipedia.org/wiki/Platz_der_Alten_Synagoge_(Freiburg_im_Breisgau)
+state:1
+
+--- TTN/13
+
+name:Stühlingerbrücke
+capacity:100
+image:https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/FR-HBF_013.jpg/600px-FR-HBF_013.jpg
+latitude:47.9969673
+longitude:7.839762
+description:Die Stühlingerbrücke ist eine Spannbetonbrücke für die Stadtbahn, Fußgänger und Radfahrer in Freiburg im Breisgau. Sie verbindet die Bertoldstraße mit der Wannerstraße und überquert dabei die Bismarckallee, den zentralen Omnibusbahnhof, den Hauptbahnhof, die Wentzingerstraße und den Stühlinger Kirchplatz.
+informationUrl:https://de.wikipedia.org/wiki/St%C3%BChlingerbr%C3%BCcke
+state:1
+
+--- TTN/15
+
+name:Freiburger Münster
+capacity:500
+image:https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Freiburger_M%C3%BCnster.jpg/1280px-Freiburger_M%C3%BCnster.jpg
+latitude:47.9955807
+longitude:7.8527893
+description:Das Freiburger Münster ist die im romanischen Stil begonnene und größtenteils im Stil der Gotik und Spätgotik vollendete römisch-katholische Stadtpfarrkirche von Freiburg im Breisgau. Sie wurde von etwa 1200 bis 1513 erbaut. Da Freiburg im Jahr 1827 Bischofssitz wurde, ist die Kirche heute formell eine Kathedrale, wird aber traditionell als „Münster“ und nicht als „Kathedrale“ bezeichnet.
+informationUrl:https://de.wikipedia.org/wiki/Freiburger_M%C3%BCnster
+state:1
+
+--- TTN/heltec_paxcounter_1
+
+name:Carl-Schurz-Haus
+capacity:100
+image:https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/P1000413_Entrance_to_the_Carl_Schurz_Haus_Freiburg.JPG/1024px-P1000413_Entrance_to_the_Carl_Schurz_Haus_Freiburg.JPG
+latitude:47.997015
+longitude:7.8441079
+description:Das Carl-Schurz-Haus oder auch Deutsch-Amerikanisches Institut wurde 1952 als Amerika-Haus in Freiburg im Breisgau gegründet und ist seit den 1960er Jahren ein binationales kulturelles Zentrum.
+informationUrl:https://de.wikipedia.org/wiki/Carl-Schurz-Haus
+state:1
+
+--- Parking/Kollegiengebäude
+
+name:Parkhaus - Kollegiengebäude
+capacity:1
+image:https://bilder.bild.de/fotos-skaliert/porsche-tower-200412285-52127292/2,w=993,q=high,c=0.bild.jpg
+latitude:0.0
+longitude:0.0
+description:T-bone meatball kevin, burgdoggen meatloaf buffalo leberkas turkey cow turducken beef ribs salami tenderloin swine venison. Salami ham hock t-bone frankfurter tongue, spare ribs alcatra andouille landjaeger buffalo chuck bresaola pastrami short loin.
+informationUrl:
+state:1
