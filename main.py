@@ -5,6 +5,7 @@ from http.server import HTTPServer
 
 from classes.input.ttn import InputTTN
 from classes.input.library import Library
+from classes.input.parking import Parking
 
 class APIThread(threading.Thread):
     def run(self):
@@ -33,6 +34,12 @@ class LibraryThread(threading.Thread):
         library = Library()
         library.fetch()
 
+class ParkingThread(threading.Thread):
+    def run(self):
+        print("Run Parking...")
+        parking = Parking()
+        parking.fetch()
+
 def main():
     api_thread = APIThread()
     api_thread.start()
@@ -45,5 +52,8 @@ def main():
 
     library = LibraryThread()
     library.start()
+
+    parking = ParkingThread()
+    parking.start()
 
 main()
