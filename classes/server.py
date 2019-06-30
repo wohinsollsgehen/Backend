@@ -72,10 +72,10 @@ class Server(BaseHTTPRequestHandler):
                 resultEntry = {}
 
                 resultEntry['name'] = entry[0]
-                resultEntry['capacity'] = entry[1]
+                # resultEntry['capacity'] = entry[1]
                 resultEntry['image'] = entry[2]
                 resultEntry['pressure'] = float(max(0.1, min(1, Decimal(entry[3]) / Decimal(entry[1]))))
-                resultEntry['visitors'] = int(entry[3])
+                # resultEntry['visitors'] = int(entry[3])
                 resultEntry['longitude'] = entry[4]
                 resultEntry['latitude'] = entry[5]
                 resultEntry['description'] = entry[6]
