@@ -31,5 +31,5 @@ class Parking(Input):
 					continue
 
 				self.storeInput('Parking', park_name, int(capacity) - int(free), time.time())
-				self.updateLocation('Parking', park_name, capacity, lnt, lat)
+				self.updateLocation('Parking', park_name, capacity, lnt, lat, state)
 			time.sleep(60)

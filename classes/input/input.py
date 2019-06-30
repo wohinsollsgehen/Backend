@@ -21,12 +21,12 @@ class Input(object):
             print(e)
 
         return None
-    def updateLocation(self, source, device_id, capacity, longitude, latitude):
+    def updateLocation(self, source, device_id, capacity, longitude, latitude, state):
         try:
             with sqlite3.connect('data/storage.sqlite3') as connection:
                 cursor = connection.cursor()
 
-                cursor.execute('UPDATE location SET capacity = \'' + str(capacity) + '\', longitude = \'' + str(longitude) + '\', latitude = \'' + str(latitude) + '\' where source = \'' + source + '\' and deviceId = \'' + device_id + '\';')
+                cursor.execute('UPDATE location SET capacity = \'' + str(capacity) + '\', longitude = \'' + str(longitude) + '\', latitude = \'' + str(latitude) + '\', state = \'' + str(state) + '\' where source = \'' + str(source) + '\' and deviceId = \'' + device_id + '\';')
 
                 connection.commit();
 
