@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "f840ab1c-9203-4e17-97e1-7b278926c68b",
+		"name": "Configure backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Update location",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "name",
+						"value": "Augustinerplatz"
+					},
+					{
+						"key": "capacity",
+						"value": "100"
+					},
+					{
+						"key": "image",
+						"value": "https://via.placeholder.com/200"
+					},
+					{
+						"key": "latitude",
+						"value": "47.9937846"
+					},
+					{
+						"key": "longitude",
+						"value": "7.8499943"
+					},
+					{
+						"key": "description",
+						"value": "Bacon ipsum dolor amet sausage swine buffalo, turkey pork biltong ham jowl landjaeger burgdoggen meatball. Beef meatball ground round t-bone, corned beef brisket frankfurter tri-tip pork loin kielbasa shankle alcatra ham hock ham."
+					},
+					{
+						"key": "informationUrl",
+						"value": ""
+					},
+					{
+						"key": "state",
+						"value": "1"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{connection}}/editLocations/{{source}}/{{deviceId}}",
+					"host": [
+						"{{connection}}"
+					],
+					"path": [
+						"editLocations",
+						"{{source}}",
+						"{{deviceId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List missing mappings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{connection}}/listInputs",
+					"host": [
+						"{{connection}}"
+					],
+					"path": [
+						"listInputs"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "377ec5f9-1833-4678-92fa-92ac1a47a207",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "002eca15-add8-4a50-8dad-c63e548db594",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "0c0f69a0-31c8-4084-a882-933e72d5773c",
+			"key": "connection",
+			"value": "http://localhost:8081",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "d18b2b55-aa08-43f9-b4de-275dc9fd845c",
+			"key": "source",
+			"value": "",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "c5d66921-091c-46ef-95a8-adc540388b43",
+			"key": "deviceId",
+			"value": "",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
